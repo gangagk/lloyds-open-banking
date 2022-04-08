@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "LastUpdated": "2022-03-07T15:18:56.991Z",
+    "TotalResults": 5,
+    "Agreement": "Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions",
+    "License": "https://www.openbanking.org.uk/open-licence",
+    "TermsOfUse": "https://www.openbanking.org.uk/terms"
+  },
+  "data": [
+    {
+      "Brand": [
+        {
+          "BrandName": "Lloyds Bank",
+          "ATM": [
+            {
+              "Identification": "LFFFBC11",
+              "SupportedCurrencies": [
+                "GBP"
+              ],
+              "Location": {
+                "PostalAddress": {
+                  "AddressLine": [
+                    "1 VICTORIA ROAD;"
+                  ],
+                  "StreetName": "1 VICTORIA ROAD",
+                  "TownName": "CONSETT",
+                  "CountrySubDivision": [
+                    "COUNTY DURHAM"
+                  ],
+                  "Country": "GB",
+                  "PostCode": "DH8 5AE"
+                }
+              }
+            },
+            {
+              "Identification": "L02DGC11",
+              "SupportedCurrencies": [
+                "GBP"
+              ],
+              "Location": {
+                "PostalAddress": {
+                  "AddressLine": [
+                    "9 MAJESTIC WAY; ST MARKS PLACE"
+                  ],
+                  "StreetName": "9 MAJESTIC WAY",
+                  "TownName": "MITCHAM",
+                  "CountrySubDivision": [
+                    "SURREY"
+                  ],
+                  "Country": "GB",
+                  "PostCode": "CR4 2JS"
+                }
+              }
+            },
+            {
+              "Identification": "L001EC11",
+              "SupportedCurrencies": [
+                "GBP"
+              ],
+              "Location": {
+                "PostalAddress": {
+                  "AddressLine": [
+                    "7 MANCHESTER ROAD;"
+                  ],
+                  "StreetName": "7 MANCHESTER ROAD",
+                  "TownName": "BURNLEY",
+                  "CountrySubDivision": [
+                    "LANCASHIRE"
+                  ],
+                  "Country": "GB",
+                  "PostCode": "BB11 1HT"
+                }
+              }
+            },
+            {
+              "Identification": "L001DC11",
+              "SupportedCurrencies": [
+                "GBP"
+              ],
+              "Location": {
+                "PostalAddress": {
+                  "AddressLine": [
+                    "18-20 THE STRAND;"
+                  ],
+                  "StreetName": "18-20 THE STRAND",
+                  "TownName": "STOKE ON TRENT",
+                  "CountrySubDivision": [
+                    "STAFFORDSHIRE"
+                  ],
+                  "Country": "GB",
+                  "PostCode": "ST3 2RP"
+                }
+              }
+            },
+            {
+              "Identification": "L001AC11",
+              "SupportedCurrencies": [
+                "GBP"
+              ],
+              "Location": {
+                "PostalAddress": {
+                  "AddressLine": [
+                    "91 OLD STREET;"
+                  ],
+                  "StreetName": "91 OLD STREET",
+                  "TownName": "ASHTON UNDER LYNE",
+                  "CountrySubDivision": [
+                    "LANCASHIRE"
+                  ],
+                  "Country": "GB",
+                  "PostCode": "OL6 7RU"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
