@@ -2,6 +2,7 @@ package com.lloyds.identity.auth.lab.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -24,15 +25,16 @@ public class PostalAddress {
   @JsonProperty("PostCode")
   public String postCode;
 
-  public PostalAddress() {}
+  public PostalAddress() {
+  }
 
   public PostalAddress(
-      List<String> addressLine,
-      String streetName,
-      String townName,
-      List<String> countrySubDivision,
-      String country,
-      String postCode) {
+          List<String> addressLine,
+          String streetName,
+          String townName,
+          List<String> countrySubDivision,
+          String country,
+          String postCode) {
     this.addressLine = addressLine;
     this.streetName = streetName;
     this.townName = townName;
@@ -92,22 +94,22 @@ public class PostalAddress {
   @Override
   public String toString() {
     return "PostalAddress{"
-        + "addressLine="
-        + addressLine
-        + ", streetName='"
-        + streetName
-        + '\''
-        + ", townName='"
-        + townName
-        + '\''
-        + ", countrySubDivision="
-        + countrySubDivision
-        + ", country='"
-        + country
-        + '\''
-        + ", postCode='"
-        + postCode
-        + '\''
-        + '}';
+            + "addressLine="
+            + addressLine
+            + ", streetName='"
+            + streetName
+            + '\''
+            + ", townName='"
+            + townName
+            + '\''
+            + ", countrySubDivision="
+            + countrySubDivision
+            + ", country='"
+            + country
+            + '\''
+            + ", postCode='"
+            + postCode
+            + '\''
+            + '}';
   }
 }

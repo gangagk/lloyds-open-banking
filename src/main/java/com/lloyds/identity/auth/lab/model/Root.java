@@ -2,6 +2,7 @@ package com.lloyds.identity.auth.lab.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -12,7 +13,8 @@ public class Root {
   @JsonProperty("data")
   public List<Data> data;
 
-  public Root() {}
+  public Root() {
+  }
 
   public Root(Meta meta, List<Data> data) {
     this.meta = meta;

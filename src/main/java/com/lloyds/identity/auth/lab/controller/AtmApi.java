@@ -3,36 +3,37 @@
  * https://github.com/swagger-api/swagger-codegen
  * Do not edit the class manually.
  */
+
 package com.lloyds.identity.auth.lab.controller;
 
 import com.lloyds.identity.auth.lab.response.AtmResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
 
 @Validated
 public interface AtmApi {
 
-    @Operation(summary = "Fetch atm data", description = "By passing in the appropriate options, you can fetch atm details ", tags={ "atm" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "search results matching criteria", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = AtmResponse.class)))),
-        
-        @ApiResponse(responseCode = "400", description = "bad input parameter") })
-    @GetMapping(path = "/atms",
-        produces = { "application/json" })
-    ResponseEntity<AtmResponse> fetchAtm(@NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an identification value" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "identification", required = true) String identification, @NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an url from which the details need to be retrieved" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "url", required = true) String url);
+  @Operation(summary = "Fetch atm data", description = "By passing in the appropriate options, you can fetch atm details ", tags = {"atm"})
+  @ApiResponses(value = {
+          @ApiResponse(responseCode = "200", description = "search results matching criteria", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = AtmResponse.class)))),
+          @ApiResponse(responseCode = "400", description = "bad input parameter")})
+  @GetMapping(path = "/atms",
+          produces = {"application/json"})
+  ResponseEntity<AtmResponse> fetchAtm(@NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an identification value", required = true, schema = @Schema()) @Valid @RequestParam(value = "identification", required = true) String identification,
+                                       @NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an url from which the details need to be retrieved", required = true, schema = @Schema()) @Valid @RequestParam(value = "url", required = true) String url);
 
 }
 

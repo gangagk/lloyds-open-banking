@@ -2,6 +2,7 @@ package com.lloyds.identity.auth.lab.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lloyds.identity.auth.lab.model.Atm;
+
 import java.util.ArrayList;
 import java.util.List;
 

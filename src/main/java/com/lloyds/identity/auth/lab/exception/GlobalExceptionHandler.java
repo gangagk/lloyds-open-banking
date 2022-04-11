@@ -26,11 +26,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
   @Override
-  protected ResponseEntity<Object> handleMethodArgumentNotValid(
-      MethodArgumentNotValidException ex,
-      HttpHeaders headers,
-      HttpStatus status,
-      WebRequest request) {
+  protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
     List<String> details = new ArrayList<>();
     for (ObjectError error : ex.getBindingResult().getAllErrors()) {
       details.add(error.getDefaultMessage());
@@ -38,16 +34,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(populateErrorResponse(ex), HttpStatus.BAD_REQUEST);
   }
 
-  @ExceptionHandler({ResourceAccessException.class,SocketTimeoutException.class})
-  public ResponseEntity<ErrorResponse> handleResourceAccessException(
-      final SocketTimeoutException ex) {
+  @ExceptionHandler({ResourceAccessException.class, SocketTimeoutException.class})
+  public ResponseEntity<ErrorResponse> handleResourceAccessException(final SocketTimeoutException ex) {
     return new ResponseEntity<>(populateErrorResponse(ex), HttpStatus.GATEWAY_TIMEOUT);
 
   }
 
   @ExceptionHandler(InternalServerError.class)
-  public ResponseEntity<ErrorResponse> handleInternalServerErrorException(
-      final InternalServerError ex) {
+  public ResponseEntity<ErrorResponse> handleInternalServerErrorException(final InternalServerError ex) {
     return new ResponseEntity<>(populateErrorResponse(ex), HttpStatus.INTERNAL_SERVER_ERROR);
 
   }
@@ -65,7 +59,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
    */
   private ErrorResponse populateErrorResponse(Exception ex) {
     ErrorResponse errorResponse = new ErrorResponse();
-    errorResponse.setMessage(ex.getMessage()  );
+    errorResponse.setMessage(ex.getMessage());
     errorResponse.setTime(DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(LocalDateTime.now()));
     logger.error(ex.getMessage(), ex);
     return errorResponse;

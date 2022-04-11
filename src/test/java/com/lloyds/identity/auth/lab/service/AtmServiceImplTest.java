@@ -32,9 +32,11 @@ public class AtmServiceImplTest {
 
   private static Root root;
 
-  @InjectMocks AtmServiceImpl atmServiceImpl;
+  @InjectMocks
+  AtmServiceImpl atmServiceImpl;
 
-  @Mock private RestTemplate restTemplate;
+  @Mock
+  private RestTemplate restTemplate;
 
   @BeforeAll
   static void beforeAll() throws IOException {
@@ -44,8 +46,7 @@ public class AtmServiceImplTest {
 
   @Test
   public void verifyNumberOfInvocationsOfAPI() {
-    Mockito.when(restTemplate.getForEntity(OPEN_API_URL, Root.class))
-        .thenReturn(new ResponseEntity(root, HttpStatus.OK));
+    Mockito.when(restTemplate.getForEntity(OPEN_API_URL, Root.class)).thenReturn(new ResponseEntity(root, HttpStatus.OK));
     atmServiceImpl.getAtms("", OPEN_API_URL);
     Mockito.verify(restTemplate, times(1)).getForEntity(OPEN_API_URL, Root.class);
   }
@@ -53,7 +54,7 @@ public class AtmServiceImplTest {
   @Test
   public void responseShouldReturnAtmIfIdentificationMatches() {
     Mockito.when(restTemplate.getForEntity(OPEN_API_URL, Root.class))
-            .thenReturn(new ResponseEntity(root, HttpStatus.OK));
+           .thenReturn(new ResponseEntity(root, HttpStatus.OK));
     AtmResponse atmResponse = atmServiceImpl.getAtms("LFFFBC11", OPEN_API_URL);
     assertEquals(1, atmResponse.getAtms().size());
   }
@@ -61,7 +62,7 @@ public class AtmServiceImplTest {
   @Test
   public void responseShouldReturnEmptyListIfIdentificationDoesNotMatches() {
     Mockito.when(restTemplate.getForEntity(OPEN_API_URL, Root.class))
-            .thenReturn(new ResponseEntity(root, HttpStatus.OK));
+           .thenReturn(new ResponseEntity(root, HttpStatus.OK));
     AtmResponse atmResponse = atmServiceImpl.getAtms("LFFBC11", OPEN_API_URL);
     assertTrue(atmResponse.getAtms().isEmpty());
   }

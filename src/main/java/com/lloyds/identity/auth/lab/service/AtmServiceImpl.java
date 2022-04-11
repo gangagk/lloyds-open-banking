@@ -27,6 +27,7 @@ public class AtmServiceImpl implements AtmService {
 
   /**
    * The service method for hitting the url and fetch the response
+   *
    * @param identification
    * @param url
    * @return
@@ -41,12 +42,10 @@ public class AtmServiceImpl implements AtmService {
       List<Atm> atmRsp = response.getBody().getData().get(0).getBrand().get(0).getAtm();
       logger.info("Result from open banking atm API : {}", atmRsp);
       // Code to filter atm response based on the identification passed
-      List<Atm> filteredAtms = atmRsp.stream()
-              .filter(atm -> identification.equalsIgnoreCase(atm.identification))
-              .collect(Collectors.toList());
+      List<Atm> filteredAtms = atmRsp.stream().filter(atm -> identification.equalsIgnoreCase(atm.identification)).collect(Collectors.toList());
       atmResponse.getAtms().addAll(filteredAtms);
       // If the requirement was to get all the Atms without filtering
-     //atmResponse.getAtms().addAll(atmRsp);
+      //atmResponse.getAtms().addAll(atmRsp);
 
 
     }

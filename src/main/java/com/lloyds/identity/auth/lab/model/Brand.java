@@ -2,6 +2,7 @@ package com.lloyds.identity.auth.lab.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -12,7 +13,8 @@ public class Brand {
   @JsonProperty("ATM")
   public List<Atm> atm;
 
-  public Brand() {}
+  public Brand() {
+  }
 
   public Brand(String brandName, List<Atm> atm) {
     this.brandName = brandName;

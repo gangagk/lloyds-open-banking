@@ -2,6 +2,7 @@ package com.lloyds.identity.auth.lab.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,10 +22,11 @@ public class Meta {
   @JsonProperty("TermsOfUse")
   public String termsOfUse;
 
-  public Meta() {}
+  public Meta() {
+  }
 
   public Meta(
-      Date lastUpdated, int totalResults, String agreement, String license, String termsOfUse) {
+          Date lastUpdated, int totalResults, String agreement, String license, String termsOfUse) {
     this.lastUpdated = lastUpdated;
     this.totalResults = totalResults;
     this.agreement = agreement;
@@ -35,20 +37,20 @@ public class Meta {
   @Override
   public String toString() {
     return "Meta{"
-        + "lastUpdated="
-        + lastUpdated
-        + ", totalResults="
-        + totalResults
-        + ", agreement='"
-        + agreement
-        + '\''
-        + ", license='"
-        + license
-        + '\''
-        + ", termsOfUse='"
-        + termsOfUse
-        + '\''
-        + '}';
+            + "lastUpdated="
+            + lastUpdated
+            + ", totalResults="
+            + totalResults
+            + ", agreement='"
+            + agreement
+            + '\''
+            + ", license='"
+            + license
+            + '\''
+            + ", termsOfUse='"
+            + termsOfUse
+            + '\''
+            + '}';
   }
 
   public Date getLastUpdated() {

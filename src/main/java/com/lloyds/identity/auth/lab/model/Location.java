@@ -8,7 +8,8 @@ public class Location {
   @JsonProperty("PostalAddress")
   public PostalAddress postalAddress;
 
-  public Location() {}
+  public Location() {
+  }
 
   public Location(PostalAddress postalAddress) {
     this.postalAddress = postalAddress;
