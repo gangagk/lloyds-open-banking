@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,27 +18,35 @@ public class AtmServiceImpl implements AtmService {
 
   private static final Logger logger = LoggerFactory.getLogger(AtmServiceImpl.class);
 
-  @Autowired
-  RestTemplate restTemplate;
+  private final RestTemplate restTemplate;
 
+  @Autowired
+  public AtmServiceImpl(RestTemplate restTemplate) {
+    this.restTemplate = restTemplate;
+  }
+
+  /**
+   * The service method for hitting the url and fetch the response
+   * @param identification
+   * @param url
+   * @return
+   */
   @Override
   public AtmResponse getAtms(String identification, String url) {
     AtmResponse atmResponse = new AtmResponse();
     atmResponse.setIdentification(identification);
-    List<Atm> filteredAtms = new ArrayList<>();
     //rest call to open banking atm api for fetching the data
     ResponseEntity<Root> response = restTemplate.getForEntity(url, Root.class);
     if (checkIfValidResponse(response)) {
       List<Atm> atmRsp = response.getBody().getData().get(0).getBrand().get(0).getAtm();
       logger.info("Result from open banking atm API : {}", atmRsp);
       // Code to filter atm response based on the identification passed
-      filteredAtms =
-          atmRsp.stream()
+      List<Atm> filteredAtms = atmRsp.stream()
               .filter(atm -> identification.equalsIgnoreCase(atm.identification))
               .collect(Collectors.toList());
       atmResponse.getAtms().addAll(filteredAtms);
-      // Code to add entire atms to response
-//      atmResponse.getAtms().addAll(atmRsp);
+      // If the requirement was to get all the Atms without filtering
+     //atmResponse.getAtms().addAll(atmRsp);
 
 
     }

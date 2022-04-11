@@ -1,10 +1,8 @@
 # Open Banking API
 
-Swagger Urls
+Swagger Url : http://localhost:8080/swagger-ui/index.html
 
-GET API : 
-
-Actuator API
+Actuator : http://localhost:8080/actuator
 
 
 

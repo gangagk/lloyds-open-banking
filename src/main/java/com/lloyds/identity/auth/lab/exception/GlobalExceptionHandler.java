@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.DataBinder;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,7 +23,7 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-  private final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+  private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(
@@ -36,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     for (ObjectError error : ex.getBindingResult().getAllErrors()) {
       details.add(error.getDefaultMessage());
     }
-    return new ResponseEntity(populateErrorResponse(ex), HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(populateErrorResponse(ex), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler({ResourceAccessException.class,SocketTimeoutException.class})

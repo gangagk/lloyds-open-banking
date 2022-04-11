@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-08T06:23:27.450Z[GMT]")
 @RestController
 public class AtmApiController implements AtmApi {
 
@@ -33,7 +32,7 @@ public class AtmApiController implements AtmApi {
         this.request = request;
     }
 
-    public ResponseEntity<AtmResponse> getatm(@NotNull @Parameter(in = ParameterIn.QUERY,
+    public ResponseEntity<AtmResponse> fetchAtm(@NotNull @Parameter(in = ParameterIn.QUERY,
             description = "pass an identification value" ,required=true,schema=@Schema()) @Valid @RequestParam(
             value = "identification", required = true) String identification, @NotNull @Parameter(
             in = ParameterIn.QUERY, description = "pass an url from which the details need to be retrieved" ,
@@ -43,9 +42,9 @@ public class AtmApiController implements AtmApi {
       if (accept != null && accept.contains("application/json")) {
         logger.info("Calling GET API in AtmAPI Controller");
         response = atmServiceImpl.getAtms(identification, url);
-        return new ResponseEntity<AtmResponse>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return new ResponseEntity<AtmResponse>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 }

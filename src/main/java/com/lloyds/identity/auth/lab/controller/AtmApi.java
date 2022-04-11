@@ -14,25 +14,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.bind.annotation.CookieValue;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.util.List;
-import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-04-08T06:23:27.450Z[GMT]")
 @Validated
 public interface AtmApi {
 
@@ -41,10 +30,9 @@ public interface AtmApi {
         @ApiResponse(responseCode = "200", description = "search results matching criteria", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = AtmResponse.class)))),
         
         @ApiResponse(responseCode = "400", description = "bad input parameter") })
-    @RequestMapping(value = "/atm",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<AtmResponse> getatm(@NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an identification value" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "identification", required = true) String identification, @NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an url from which the details need to be retrieved" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "url", required = true) String url);
+    @GetMapping(path = "/atms",
+        produces = { "application/json" })
+    ResponseEntity<AtmResponse> fetchAtm(@NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an identification value" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "identification", required = true) String identification, @NotNull @Parameter(in = ParameterIn.QUERY, description = "pass an url from which the details need to be retrieved" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "url", required = true) String url);
 
 }
 
